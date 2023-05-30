@@ -10,6 +10,7 @@ from rest_framework_swagger.views import get_swagger_view
 from apps.posts.views import PostViewSet
 from apps.videos.views import VideoViewSet
 from apps.files.views import FileViewSet
+from apps.home.views import HomeView
 
 schema_view = get_swagger_view(title='API')
 router = DefaultRouter()
@@ -21,6 +22,7 @@ router.register(r'files', FileViewSet, basename='files')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('swagger/', schema_view),
+    path('', HomeView.as_view()),
 ]
 
 

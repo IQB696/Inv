@@ -6,7 +6,9 @@ from datetime import timedelta
 
 from dotenv import load_dotenv
 
+
 load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -17,11 +19,14 @@ sys.path.insert(0, os.path.join(BASE_DIR, "apps"))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-r=(o!%ga--r^ob+no+yt-d4&d-xcm^&j&&jqh1%n9fe7150#=l')
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
 
 ALLOWED_HOSTS = []
 
@@ -29,8 +34,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 AUTH_USER_MODEL = 'users.User'
-
-# Application definition
 
 DJANGO_APPS = [
     'django.contrib.admin',
@@ -58,6 +61,7 @@ LOCAL_APPS = [
     'posts',
     'videos',
     'files',
+    'home',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY + LOCAL_APPS
@@ -151,10 +155,12 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
@@ -170,17 +176,6 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
 }
 
-CONSTANCE_ADDITIONAL_FIELDS = {
-    'language_select': ['django.forms.fields.ChoiceField', {
-        'widget': 'django.forms.Select',
-        'choices': (("EN", "English"), ("NO", "Norway"))
-    }],
-}
-
-CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
-CONSTANCE_CONFIG = {
-    'LANGUAGE': ('EN', 'Select language', 'language_select'),
-}
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=14),
