@@ -9,11 +9,13 @@ from rest_framework_swagger.views import get_swagger_view
 
 from apps.posts.views import PostViewSet
 from apps.videos.views import VideoViewSet
+from apps.files.views import FileViewSet
 
 schema_view = get_swagger_view(title='API')
 router = DefaultRouter()
 router.register(r'posts', PostViewSet, basename='posts')
 router.register(r'videos', VideoViewSet, basename='videos')
+router.register(r'files', FileViewSet, basename='files')
 
 
 urlpatterns = [
